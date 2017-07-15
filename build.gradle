@@ -22,6 +22,8 @@ intellij {
     version '2017.1'
     pluginName rootProject.name
     updateSinceUntilBuild false
+
+    plugins = ['org.intellij.plugins.markdown:2017.1.20170302']
 }
 
 repositories {

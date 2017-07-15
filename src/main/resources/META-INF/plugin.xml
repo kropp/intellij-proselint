@@ -1,0 +1,27 @@
+<idea-plugin>
+    <id>name.kropp.intellij.proselint</id>
+    <name>Proselint</name>
+    <version>0.1</version>
+    <vendor email="victor.kropp@gmail.com" url="https://victor.kropp.name/projects/proselint/">Victor Kropp</vendor>
+
+    <description><![CDATA[
+    Proselint
+    ]]></description>
+
+    <change-notes><![CDATA[
+    ]]>
+    </change-notes>
+
+    <idea-version since-build="171.0"/>
+
+    <depends>com.intellij.modules.lang</depends>
+    <depends>org.intellij.plugins.markdown</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <externalAnnotator language="Markdown" implementationClass="name.kropp.intellij.proselint.ProselintAnnotator"/>
+    </extensions>
+
+    <actions>
+    </actions>
+
+</idea-plugin>
