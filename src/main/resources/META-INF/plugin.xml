@@ -19,6 +19,10 @@
 
     <extensions defaultExtensionNs="com.intellij">
         <externalAnnotator language="Markdown" implementationClass="name.kropp.intellij.proselint.ProselintAnnotator"/>
+        <projectService serviceImplementation="name.kropp.intellij.proselint.ProselintProjectSettings"/>
+        <projectConfigurable groupId="Settings.Markdown.Css"
+                             id="reference.settingsdialog.project.proselint"
+                             instance="name.kropp.intellij.proselint.ProselintConfigurable"/>
     </extensions>
 
     <actions>

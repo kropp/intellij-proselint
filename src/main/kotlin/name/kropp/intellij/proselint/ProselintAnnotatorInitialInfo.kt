@@ -1,3 +1,5 @@
 package name.kropp.intellij.proselint
 
-data class ProselintAnnotatorInitialInfo(val filepath: String)
+import com.intellij.openapi.project.Project
+
+data class ProselintAnnotatorInitialInfo(val project: Project, val filepath: String)
