@@ -1,5 +1,3 @@
 package name.kropp.intellij.proselint
 
-class ProselintAnnotatorInitialInfo {
-
-}
+data class ProselintAnnotatorInitialInfo(val filepath: String)

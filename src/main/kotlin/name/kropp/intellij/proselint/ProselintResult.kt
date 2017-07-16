@@ -1,5 +1,3 @@
 package name.kropp.intellij.proselint
 
-class ProselintResult {
-
-}
+data class ProselintResult(val inspections: Iterable<Map<*, *>>, val error: String? = null)
