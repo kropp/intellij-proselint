@@ -4,6 +4,7 @@ import com.intellij.execution.configurations.GeneralCommandLine
 import com.intellij.execution.util.ExecUtil
 import com.intellij.lang.annotation.AnnotationHolder
 import com.intellij.lang.annotation.ExternalAnnotator
+import com.intellij.lang.annotation.HighlightSeverity
 import com.intellij.openapi.components.ServiceManager
 import com.intellij.openapi.editor.Editor
 import com.intellij.openapi.util.TextRange
@@ -21,14 +22,20 @@ class ProselintAnnotator : ExternalAnnotator<ProselintAnnotatorInitialInfo, Pros
       try {
         val range = TextRange((error["start"] as Double).toInt() - 1, (error["end"] as Double).toInt() - 2)
         val message = error["message"] as String
-        when (error["severity"]) {
-          "warning" -> holder.createWarningAnnotation(range, message)
-          "error" -> holder.createErrorAnnotation(range, message)
-          else -> holder.createWeakWarningAnnotation(range, message)
+        val replacement = error["replacements"] as? String ?: ""
+
+        holder.createAnnotation(severity(error["severity"]), range, message).apply {
+          registerFix(ProselintFix(range, replacement))
         }
       } catch (e: Throwable) {
       }
     }
+  }
+
+  private fun severity(severity: Any?) = when(severity) {
+    "warning" -> HighlightSeverity.WARNING
+    "error" -> HighlightSeverity.ERROR
+    else -> HighlightSeverity.WEAK_WARNING
   }
 
   override fun doAnnotate(collectedInfo: ProselintAnnotatorInitialInfo) = try {
@@ -40,4 +47,3 @@ class ProselintAnnotator : ExternalAnnotator<ProselintAnnotatorInitialInfo, Pros
     ProselintResult(emptyList(), e.message)
   }
 }
-
