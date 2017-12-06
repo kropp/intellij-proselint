@@ -16,9 +16,11 @@
 
     <depends>com.intellij.modules.lang</depends>
     <depends>org.intellij.plugins.markdown</depends>
+    <depends>org.jetbrains.plugins.rest</depends>
 
     <extensions defaultExtensionNs="com.intellij">
         <externalAnnotator language="Markdown" implementationClass="name.kropp.intellij.proselint.ProselintAnnotator"/>
+        <externalAnnotator language="ReST" implementationClass="name.kropp.intellij.proselint.ProselintAnnotator"/>
         <projectService serviceImplementation="name.kropp.intellij.proselint.ProselintProjectSettings"/>
         <projectConfigurable groupId="Settings.Markdown.Css"
                              id="reference.settingsdialog.project.proselint"
