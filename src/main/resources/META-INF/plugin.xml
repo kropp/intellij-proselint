@@ -9,6 +9,7 @@
     ]]></description>
 
     <change-notes><![CDATA[
+    Add support for ReStructuredText (by @marcw)
     ]]>
     </change-notes>
 
